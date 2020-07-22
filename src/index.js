@@ -1,7 +1,7 @@
 'use strict';
 
 
-import team from '../src/modules/team';
+import sectionTopMenu from './modules/sectionTopMenu';
 
 
 
@@ -9,3 +9,4 @@ import team from '../src/modules/team';
 
 
 //Вызов функции
+sectionTopMenu();
