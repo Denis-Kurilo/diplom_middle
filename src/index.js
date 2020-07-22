@@ -4,6 +4,7 @@
 import sectionTopMenu from './modules/sectionTopMenu';
 import maskPhone from './modules/maskPhone';
 import sendForm from './modules/sendForm';
+import scrollDown from './modules/scrollDown';
 
 
 
@@ -18,3 +19,6 @@ maskPhone('селектор элементов', 'маска, если маск�
 
 //send-ajax-form
 sendForm();
+
+//scroll-down
+scrollDown();
