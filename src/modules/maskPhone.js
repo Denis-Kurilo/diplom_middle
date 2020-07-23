@@ -38,4 +38,5 @@ function maskPhone(selector, masked = "+7 (___) ___-__-__") {
 
 maskPhone('#callback_form1-phone');
 maskPhone('#callback_form2-phone');
+maskPhone('#phone');
 export default maskPhone;
