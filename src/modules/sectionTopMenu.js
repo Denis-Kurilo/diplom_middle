@@ -90,13 +90,21 @@ const sectionTopMenu = () => {
 	
 	//validation-form
 	const validationForm = () => {
-		const inputName = document.querySelectorAll('input[type=text]:not(.promoCode)');
+		const inputName = document.querySelectorAll('input[type=text]:not(.promoCode)'),
+			btnSubmit = document.querySelectorAll('button[type=submit]');
 		inputName.forEach((elem) => {
 			elem.addEventListener('input', () => {
 				let input = elem.value;
 				elem.value = input.replace(/[^а-яёА-ЯЁ\s]+/ig, '');
 			});
 		});
+
+		
+/*
+		checkbox.forEach((elem) => {
+			console.dir(elem)
+
+		});*/
 
 		
 	};

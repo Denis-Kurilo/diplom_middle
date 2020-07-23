@@ -35,6 +35,7 @@ const sendForm = () => {
 		      console.error(error);
 		    });
 	  });
+
 	});
 	   
 	const statusMessage = document.createElement('div');
