@@ -6,6 +6,7 @@ import maskPhone from './modules/maskPhone';
 import sendForm from './modules/sendForm';
 import scrollDown from './modules/scrollDown';
 import sliders from './modules/sliders';
+import mobileMenu from './modules/mobileMenu';
 
         
   
@@ -27,4 +28,7 @@ scrollDown();
 
 //slider-Header
 sliders();
+
+//mobileMenu
+mobileMenu();
 
