@@ -12,5 +12,19 @@ const scrollDown = () => {
 				})
 			});
 		}
+
+		//arrow appearance
+		const headerMain = document.querySelector('.top-menu'),
+			totop = document.getElementById('totop'),
+			offsetHeight = headerMain.offsetHeight;
+		window.addEventListener('scroll', () => {
+			if (window.pageYOffset >= offsetHeight) {
+	    	totop.style.transform = 'translateX(0px)';
+		  } else {
+	    	totop.style.transform = 'translateX(100px)';
+		  }
+		});
 };
 export default scrollDown;
+
+
