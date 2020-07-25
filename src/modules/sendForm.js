@@ -4,7 +4,7 @@ const sendForm = () => {
 	  successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
 
 	const form = document.querySelectorAll('form'),
-		input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel]'),
+		input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox]'),
 		checkbox = document.querySelectorAll('input[type=checkbox]'),
 		btn = document.querySelectorAll('button[type=submit]');
 
@@ -37,6 +37,15 @@ const sendForm = () => {
 		      statusMessage.textContent = errorMessage;
 		      console.error(error);
 		    });
+
+		    input.forEach(elem => {
+				elem.value = '';
+				elem.checked = false;
+			});
+
+			btn.forEach(elem => {
+				elem.setAttribute('disabled','disabled');
+			});
 	  });
 
 	  elem.addEventListener('click', (e) => {
