@@ -1,6 +1,4 @@
 const sectionTopMenu = () => {
-	const input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel]');
-	
 	//btnDropdown
 	const btnDropdown = () => {
 		const clubSelect = document.querySelector('.club-select'),
@@ -21,57 +19,47 @@ const sectionTopMenu = () => {
 		});	
 	};
 	btnDropdown();
-	
-	//free_visit_form
-	const visitForm = (elem) => {
-		const openPopup = document.querySelector('.open-popup'),
-			freeVisitForm = document.getElementById('free_visit_form');
 
-		openPopup.addEventListener('click', () => {
-			freeVisitForm.style.display = 'block';
-		});
+	const forms = () => {
+		const body = document.querySelector('body'),
+			openPopup = document.querySelector('.open-popup'),
+			freeVisitForm = document.getElementById('free_visit_form'),
+			callbackBtn = document.querySelector('.callback-btn'),
+			callbackForm = document.getElementById('callback_form'),
+			input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox]'),
+			btn = document.querySelectorAll('button[type=submit]');
+			
+	body.addEventListener('click', (e) => {
+		let target = e.target;
+		if(target.classList.contains('overlay')){
+			const idForm = target.parentNode.id;
+			document.getElementById(idForm).style.display = 'none';
+			
+			input.forEach(elem => {
+				elem.value = '';
+				elem.checked = false;
+			});
 
-		freeVisitForm.addEventListener('click', (e) => {
-			let target = e.target;
-			target = target.closest('.form-content');
-			if(!target){
-				freeVisitForm.style.display = '';
-				input.forEach(elem => {
-					elem.value = '';
-					elem.checked = false;
-				});
-			}
-		});
-	};
-	visitForm();
+			btn.forEach(elem => {
+				elem.setAttribute('disabled','disabled');
+			});
+		}
+	});
 
-	//btnForm
-	const btnForm = () => {
-		const callbackBtn = document.querySelector('.callback-btn'),
-			callbackForm = document.getElementById('callback_form');
-
-		callbackBtn.addEventListener('click', () => {
-			callbackForm.style.display = 'block';
-		});
-
-		callbackForm.addEventListener('click', (e) => {
-			let target = e.target;
-			target = target.closest('.form-content');
-			if(!target){
-				callbackForm.style.display = '';
-				input.forEach(elem => {
-					elem.value = '';
-					elem.checked = false;
-				});
-			}
-		});
-	};
-	btnForm();
+	openPopup.addEventListener('click', () => {
+		freeVisitForm.style.display = 'block';
+	});
+	callbackBtn.addEventListener('click', () => {
+		callbackForm.style.display = 'block';
+	});
+	}
+	forms();
 
 	//gift
 	const promo = () => {
 		const fixedGift = document.querySelector('.fixed-gift'),
-			gift = document.getElementById('gift');
+			gift = document.getElementById('gift'),
+			closeBtn = document.querySelector('.close-btn');
 
 		fixedGift.addEventListener('click', () => {
 			gift.style.display = 'block';
@@ -84,6 +72,10 @@ const sectionTopMenu = () => {
 			if(!target){
 				gift.style.display = '';
 			};
+
+			if(e.target.closest('.close-btn')){
+				gift.style.display = '';
+			}
 		});
 	};
 	promo();

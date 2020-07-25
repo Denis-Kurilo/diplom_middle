@@ -19,7 +19,7 @@ const sendForm = () => {
 		  let body = {};
 		  formData.forEach((val, key) => {
 		    body[key] = val;
-		  });   
+		  });  
 
 		  postData(body)
 		    .then((response) => {
@@ -39,24 +39,18 @@ const sendForm = () => {
 		    });
 	  });
 
-
-
-
-	/*  elem.addEventListener('click', (e) => {
+	  elem.addEventListener('click', (e) => {
 			let target = e.target;
-			console.log(target)
-			if(target.checked){
-				btn.forEach((elem) => {
+			if(target.closest('input[type=checkbox]')){
+				for (let i = 0; i < btn.length; i++){
 					if(target.checked){
-						elem.removeAttribute('disabled');	
-						console.log('1')
-					}else if(!target.checked){
-						elem.setAttribute('disabled','disabled');
-						console.log('1')
-					}
-				})
+						btn[i].removeAttribute('disabled')
+					}else{
+						btn[i].setAttribute('disabled','disabled');
+					}		
+				}
 			}
-		});*/
+		});
 	});
 
 	const statusMessage = document.createElement('div');
@@ -70,22 +64,6 @@ const sendForm = () => {
 			},
 			body: JSON.stringify(body)
 		});
-	}	
-
-
-	//validate checkbox
-	/*form.addEventListener('click', (e) => {
-		let target = e.target;
-		console.log(target)
-	});*/
-	/*checkbox.forEach((elem) => {
-		elem.addEventListener('click', () => {
-			console.dir(elem.checked)
-			if(elem.checked){
-
-			}
-		});	
-	});*/
-	
+	}		
 };
 export default sendForm;
