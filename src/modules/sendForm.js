@@ -6,7 +6,8 @@ const sendForm = () => {
 	const form = document.querySelectorAll('form'),
 		input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox]'),
 		checkbox = document.querySelectorAll('input[type=checkbox]'),
-		btn = document.querySelectorAll('button[type=submit]');
+		btn = document.querySelectorAll('button[type=submit]'),
+		thanks = document.getElementById('thanks');
 
 	form.forEach((elem) => {
 		elem.addEventListener('submit', (event) => {

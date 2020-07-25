@@ -21,8 +21,6 @@ const sliders = () => {
 	};
 	sliderHeader();
 
-
-
 	//services-slider
 	class SliderCourusel {
 		constructor({ 
@@ -202,7 +200,6 @@ const sliders = () => {
 			window.addEventListener('resize', checkResponse);
 		}
 	};
-
 	const carousel = new SliderCourusel({
 	  	main: '.wrapper-slider',
 		wrap: '.services-slider',
@@ -223,30 +220,85 @@ const sliders = () => {
 		]
 	});
 	carousel.init();
-   
 
-
-
-
-	/*const sliderServices = () => {
-		const slide = document.querySelectorAll('.slide'),
-			 servicesSlider = document.querySelector('.services-slider');
+   	//fotoGallery
+	const fotoGallery = () => {
+		const slides = document.querySelectorAll('.gallery-slider>.slide'),
+			 servicesSlider = document.querySelector('.gallery-slider'),
+			 prev = document.querySelector('.prev'),
+			 next = document.querySelector('.next');
 		let currentSlider = 0;
-
-		const startSlide = () => {
-			setInterval(autoPlaySlide, 5000);
+	
+		const autoPlaySlide = () => {
+			slides[currentSlider].classList.remove('galleryActive');
+			++currentSlider;
+			if(currentSlider >= slides.length){
+				currentSlider = 0;
+			};
+			slides[currentSlider].classList.add('galleryActive');
 		};
 
-		console.log(slide)
-		console.log(servicesSlider)
+		const startSlide = () => {
+			setInterval(autoPlaySlide, 3000);
+		};
+		startSlide();
 
+		const btnPrev = () => {
+			slides[currentSlider].classList.remove('galleryActive');
+			if(currentSlider - 1 == -1){
+				currentSlider = slides.length -1;
+			}else{
+				slides[currentSlider].classList.remove('galleryActive');
+				currentSlider--;
+			}
+			slides[currentSlider].classList.add('galleryActive');
+		}
 
+		const btnNext = () => {
+			slides[currentSlider].classList.remove('galleryActive');
+			if(currentSlider + 1 == slides.length){
+				currentSlider = 0
+			}else{
+				slides[currentSlider].classList.remove('galleryActive');
+				currentSlider++;
+			}
+			slides[currentSlider].classList.add('galleryActive');
+		}
 
+		const styleBtn = document.createElement('style');
+			styleBtn.textContent = `
+				.prev,
+				.next{
+					width: 40px;
+				    height: 40px;
+				    border: none;
+				    background-color: #FAD000;
+				    border-radius: 50%;
+				    position: absolute;
+					top: 45%;
+					font-size: 16px;
+    				font-weight: 700;
+    				padding-top: 4px;
+    				filter: drop-shadow(5px 4px 6px black);
+    				transition: all .4s;
+				}
+				.prev:hover,
+				.next:hover{
+					filter: none;
+				}
+				.next{
+					right: 0; 
+				}
 
-
-
+				.prev{
+					left: 0;
+				}
+			`;
+			document.head.appendChild(styleBtn);
+		prev.addEventListener('click', btnPrev);
+		next.addEventListener('click', btnNext);
 	};
-	sliderServices();*/
+	fotoGallery();
 
 
 
