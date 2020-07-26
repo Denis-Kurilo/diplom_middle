@@ -27,31 +27,57 @@ const sectionTopMenu = () => {
 			callbackBtn = document.querySelector('.callback-btn'),
 			callbackForm = document.getElementById('callback_form'),
 			input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox]'),
-			btn = document.querySelectorAll('button[type=submit]');
+			btn = document.querySelectorAll('button[type=submit]'),
+			closeIcon = document.querySelectorAll('.close_icon'),
+			closeBtn = document.querySelectorAll('.close-btn'),
+			thanks = document.getElementById('thanks');
 			
-	body.addEventListener('click', (e) => {
-		let target = e.target;
-		if(target.classList.contains('overlay')){
-			const idForm = target.parentNode.id;
-			document.getElementById(idForm).style.display = 'none';
+		body.addEventListener('click', (e) => {
+			let target = e.target;
 			
-			input.forEach(elem => {
-				elem.value = '';
-				elem.checked = false;
-			});
+			if(target.classList.contains('overlay')){
+				const idForm = target.parentNode.id;
+				document.getElementById(idForm).style.display = 'none';+
 
-			btn.forEach(elem => {
-				elem.setAttribute('disabled','disabled');
-			});
-		}
-	});
+				input.forEach(elem => {
+					elem.value = '';
+					elem.checked = false;
 
-	openPopup.addEventListener('click', () => {
-		freeVisitForm.style.display = 'block';
-	});
-	callbackBtn.addEventListener('click', () => {
-		callbackForm.style.display = 'block';
-	});
+					
+				});
+
+				btn.forEach(elem => {
+					elem.setAttribute('disabled','disabled');
+				});
+			}
+		});
+
+		closeIcon.forEach(elem => {
+			elem.addEventListener('click', (event) => {
+				let target = event.target.parentNode.parentNode;
+				if(target.parentNode.id === 'free_visit_form'){
+					freeVisitForm.style.display = 'none';
+				}else if(target.parentNode.id === 'callback_form'){
+					callbackForm.style.display = 'none';
+				}else if(target.parentNode.id === 'thanks'){
+					thanks.style.display = 'none';
+				}
+			});
+		});
+
+		openPopup.addEventListener('click', () => {
+			freeVisitForm.style.display = 'block';
+		});
+		callbackBtn.addEventListener('click', () => {
+			callbackForm.style.display = 'block';
+		});
+
+		closeBtn.forEach(elem => {
+			elem.style.marginBottom ='30px';
+			elem.addEventListener('click', () => {
+				thanks.style.display = 'none';
+			});
+		})
 	}
 	forms();
 
