@@ -39,7 +39,6 @@ const sendForm = () => {
                     formContent.append(statusMes);
                 } else {
                     statusMessage.textContent = status;
-
                 }
             };
             const formData = new FormData(elem);
@@ -73,44 +72,29 @@ const sendForm = () => {
             btn.forEach(elem => {
                 elem.setAttribute('disabled', 'disabled');
             });
-
-
         });
 
-        
-			
         elem.addEventListener('click', (e) => {
             let target = e.target;
             if (target.closest('input[type=checkbox]')) {
                 for (let i = 0; i < btn.length; i++) {
                     if (target.checked) {
                         btn[i].removeAttribute('disabled');
-                    
-                        mesConfirm.style.display = 'none';	
-                        
-
+                        mesConfirm.style.display = 'none';
                     } else {
                         btn[i].setAttribute('disabled', 'disabled');
                         mesConfirm.style.display = 'block';
                     }
-
                 }
             }
         });
-        	const mesConfirm = document.createElement('div');
-        	if(elem !== footerForm){
-			    mesConfirm.style.cssText = 'font-size: 14px; color: #ffabab; text-decoration: underline;';
-			    mesConfirm.textContent = 'Подтвердите обработку персональных данных';
-			    elem.append(mesConfirm);	
-        	}
-	           
-	    });
-
-
-   
-
-    
-
+        const mesConfirm = document.createElement('div');
+        if (elem !== footerForm) {
+            mesConfirm.style.cssText = 'font-size: 14px; color: #ffabab; text-decoration: underline;';
+            mesConfirm.textContent = 'Подтвердите обработку персональных данных';
+            elem.append(mesConfirm);
+        }
+    });
     const statusMessage = document.createElement('div');
     statusMessage.style.cssText = 'font-size: 20px; color: white';
 
