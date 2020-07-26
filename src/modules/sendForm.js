@@ -8,7 +8,8 @@ const sendForm = () => {
         checkbox = document.querySelectorAll('input[type=checkbox]'),
         btn = document.querySelectorAll('button[type=submit]'),
         thanks = document.getElementById('thanks'),
-        bannerForm = document.getElementById('banner-form');
+        bannerForm = document.getElementById('banner-form'),
+        footerForm = document.getElementById('footer_form');
     form.forEach((elem) => {
         elem.addEventListener('submit', (event) => {
             let target = event.target;
@@ -84,20 +85,25 @@ const sendForm = () => {
                 for (let i = 0; i < btn.length; i++) {
                     if (target.checked) {
                         btn[i].removeAttribute('disabled');
-                        mesConfirm.style.display = 'none';
+                    
+                        mesConfirm.style.display = 'none';	
+                        
 
                     } else {
                         btn[i].setAttribute('disabled', 'disabled');
                         mesConfirm.style.display = 'block';
                     }
-                    
+
                 }
             }
         });
-	        const mesConfirm = document.createElement('div');
-		    mesConfirm.style.cssText = 'font-size: 14px; color: #ffabab; text-decoration: underline;';
-		    mesConfirm.textContent = 'Подтвердите обработку персональных данных';
-		    elem.append(mesConfirm);   
+        	const mesConfirm = document.createElement('div');
+        	if(elem !== footerForm){
+			    mesConfirm.style.cssText = 'font-size: 14px; color: #ffabab; text-decoration: underline;';
+			    mesConfirm.textContent = 'Подтвердите обработку персональных данных';
+			    elem.append(mesConfirm);	
+        	}
+	           
 	    });
 
 
