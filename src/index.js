@@ -6,6 +6,7 @@ import sendForm from './modules/sendForm';
 import scrollDown from './modules/scrollDown';
 import sliders from './modules/sliders';
 import mobileMenu from './modules/mobileMenu';
+import calc from './modules/calc';
 
   
        
@@ -30,4 +31,7 @@ sliders();
 
 //mobileMenu
 mobileMenu();
+
+//calc
+calc();
 
