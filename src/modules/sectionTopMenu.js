@@ -1,4 +1,5 @@
 const sectionTopMenu = () => {
+
     //btnDropdown
     const btnDropdown = () => {
         const clubSelect = document.querySelector('.club-select'),
@@ -32,7 +33,7 @@ const sectionTopMenu = () => {
             closeBtn = document.querySelectorAll('.close-btn'),
             thanks = document.getElementById('thanks');
 
-        body.addEventListener('click', (e) => {
+        /*body.addEventListener('click', (e) => {
             let target = e.target;
 
             if (target.classList.contains('overlay')) {
@@ -42,15 +43,13 @@ const sectionTopMenu = () => {
                 input.forEach(elem => {
                     elem.value = '';
                     elem.checked = false;
-                });
-               
-                
+                });        
 
                 btn.forEach(elem => {
                     elem.setAttribute('disabled', 'disabled');
                 });
             }
-        });
+        });*/
 
         closeIcon.forEach(elem => {
             elem.addEventListener('click', (event) => {

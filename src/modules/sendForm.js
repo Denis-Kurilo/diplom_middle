@@ -4,7 +4,8 @@ const sendForm = () => {
         successMessage = 'Отправлено!';
 
     const form = document.querySelectorAll('form'),
-        input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox]'),
+        body = document.querySelector('body'),
+        input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox], input[type=radio]'),
         checkbox = document.querySelectorAll('input[type=checkbox]'),
         btn = document.querySelectorAll('button[type=submit]'),
         thanks = document.getElementById('thanks'),
@@ -34,13 +35,13 @@ const sendForm = () => {
                     setTimeout(() => {
                         statusMes.textContent = '';
                         thanks.style.display = 'none';
-                    }, 8000)
+                    }, 6000)
                     formContent.append(statusMes);
                 } else {
                     statusMessage.textContent = status;
                 }
             };
-            if (target.id === 'banner-form'){
+            if (target.id === 'banner-form' || target.id === 'footer_form'){
                 thanksPopUp(undefined, loadMessage);
             }else{
                 statusMessage.textContent = loadMessage;
@@ -93,12 +94,34 @@ const sendForm = () => {
                 }
             }
         });
+        body.addEventListener('click', (e) => {
+            let target = e.target;
+
+            if (target.classList.contains('overlay')) {
+                const idForm = target.parentNode.id;
+                document.getElementById(idForm).style.display = 'none'; +
+
+                input.forEach(elem => {
+                    elem.value = '';
+                    elem.checked = false;
+                });   
+                mesConfirm.style.display = 'block';     
+
+                btn.forEach(elem => {
+                    elem.setAttribute('disabled', 'disabled');
+                });
+            }
+        });
         const mesConfirm = document.createElement('div');
-        if (elem !== footerForm) {
-            mesConfirm.style.cssText = 'font-size: 14px; color: #ffabab; text-decoration: underline;';
-            mesConfirm.textContent = 'Подтвердите обработку персональных данных';
-            elem.append(mesConfirm);
+        const confirm = () => {
+            if (elem !== footerForm) {
+                mesConfirm.style.cssText = 'font-size: 14px; color: #ffabab; text-decoration: underline;';
+                mesConfirm.textContent = 'Подтвердите обработку персональных данных';
+                elem.append(mesConfirm);
+            }  
         }
+        confirm();
+        
     });
     const statusMessage = document.createElement('div');
     statusMessage.style.cssText = 'font-size: 20px; color: white';
