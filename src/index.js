@@ -1,6 +1,5 @@
 'use strict';
 
-
 import sectionTopMenu from './modules/sectionTopMenu';
 import maskPhone from './modules/maskPhone';
 import sendForm from './modules/sendForm';
@@ -8,8 +7,8 @@ import scrollDown from './modules/scrollDown';
 import sliders from './modules/sliders';
 import mobileMenu from './modules/mobileMenu';
 
-        
   
+       
 
 
 

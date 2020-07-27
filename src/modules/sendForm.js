@@ -1,7 +1,7 @@
 const sendForm = () => {
-    const errorMessage = 'Что то пошло не так',
-        loadMessage = 'Загрузка...',
-        successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
+    const errorMessage = 'Ошибка',
+        loadMessage = 'Идет отправка...',
+        successMessage = 'Отправлено!';
 
     const form = document.querySelectorAll('form'),
         input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox]'),
@@ -15,9 +15,8 @@ const sendForm = () => {
             let target = event.target;
             event.preventDefault();
             elem.appendChild(statusMessage);
-
-            const thanksPopUp = (status) => {
-                const formContent = document.querySelector('.form-content>p');
+            const formContent = document.querySelector('.form-content>p');
+            const thanksPopUp = (status, loaded) => {
                 let target = event.target;
                 formContent.style.cssText = `
 					height: 100%;
@@ -28,19 +27,25 @@ const sendForm = () => {
                 if (target.id === 'banner-form' || target.id === 'footer_form') {
                     thanks.style.display = 'flex';
                     const statusMes = document.createElement('span');
-                    statusMes.textContent = status;
-
+                    statusMes.textContent = loaded;
+                    setTimeout(() => {
+                       statusMes.textContent = status; 
+                    }, 1000);
                     setTimeout(() => {
                         statusMes.textContent = '';
                         thanks.style.display = 'none';
-                    }, 7000)
-
-
+                    }, 8000)
                     formContent.append(statusMes);
                 } else {
                     statusMessage.textContent = status;
                 }
             };
+            if (target.id === 'banner-form'){
+                thanksPopUp(undefined, loadMessage);
+            }else{
+                statusMessage.textContent = loadMessage;
+            }
+
             const formData = new FormData(elem);
             let body = {};
             formData.forEach((val, key) => {

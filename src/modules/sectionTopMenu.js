@@ -43,6 +43,8 @@ const sectionTopMenu = () => {
                     elem.value = '';
                     elem.checked = false;
                 });
+               
+                
 
                 btn.forEach(elem => {
                     elem.setAttribute('disabled', 'disabled');
@@ -111,12 +113,26 @@ const sectionTopMenu = () => {
 
     //validation-form
     const validationForm = () => {
-        const inputName = document.querySelectorAll('input[type=text]:not(.promoCode)');
+        const inputName = document.querySelectorAll('input[type=text]:not(.promoCode)'),
+             tel = document.querySelectorAll('input[type=tel]:not(.promoCode)'),
+             checkbox = document.querySelectorAll('input[type=checkbox]:not(.promoCode)');
         inputName.forEach((elem) => {
             elem.addEventListener('input', () => {
                 let input = elem.value;
                 elem.value = input.replace(/[^а-яёА-ЯЁ\s]+/ig, '');
             });
+        });
+        tel.forEach(elem => {
+            elem.addEventListener('input', (e) => {
+                let target = e.target;
+                checkbox.forEach((elem, index) => {
+                    if(target.value.length < 18){
+                        elem.setAttribute('disabled', 'disabled');
+                    }else{
+                        elem.removeAttribute('disabled');
+                    }   
+                });  
+            })
         });
     };
     validationForm();

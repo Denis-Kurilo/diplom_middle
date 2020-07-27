@@ -8,11 +8,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.min.css">
-    <script src="dist/main.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="dist/main.js" defer></script>
 </head>
 <body>
-<header class="header-main">
+<header id="top" class="header-main">
     <div class="head">
         <div class="wrapper">
             <div class="head-main">
@@ -79,7 +79,7 @@
         <div class="wrapper">
             <div class="main-slider">
                 <div class="slide">
-                    <div class="slide-text">
+                    <div class="slide-text active">
                         <div class="offer-head">
                             <p class="top">2 круглосуточные</p>
                             <p class="middle">клубные карты</p>
@@ -163,7 +163,7 @@
         </p>
     </div>
 </div>
-<section id="leto-mozaika" class="about-club">
+<section id="leto-mozaika clubs" class="about-club">
     <div class="wrapper">
         <div class="left">
             <div class="image">
@@ -364,6 +364,9 @@
                 <div class="slide">
                     <img src="images/gallery/photo5.jpg" alt="">
                 </div>
+                <button class="sliderBtn prev"> < </button>
+                <button class="sliderBtn next"> > </button>
+                <ul class="dots"></ul>
             </div>
         </div>
     </div>
@@ -526,7 +529,7 @@
     </div>
 </footer>
 <div class="wrapper">
-    <a href="#" id="totop"><i class="fa fa-arrow-up" aria-hidden="true"></i>
+    <a href="#top" id="totop"><i class="fa fa-arrow-up" aria-hidden="true"></i>
     </a>
 </div>
 <div class="popup" id="callback_form">

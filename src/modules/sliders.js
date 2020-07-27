@@ -14,13 +14,18 @@ const sliders = () => {
             slide[currentSlider].classList.add('active');
         };
         const startSlide = () => {
-            setInterval(autoPlaySlide, 5000);
+            setInterval(autoPlaySlide, 15000);
         };
-
+        
         startSlide();
+        
     };
-    sliderHeader();
-
+    try{
+        sliderHeader();
+    }catch(error){
+        console.error()
+    }
+    
     //services-slider
     class SliderCourusel {
         constructor({
@@ -220,7 +225,7 @@ const sliders = () => {
         ]
     });
     carousel.init();
-
+   
     //fotoGallery
     const addDots = () => {
         const slide = document.querySelectorAll('.gallery-slider>.slide'),
@@ -280,7 +285,12 @@ const sliders = () => {
 		`;
         document.head.append(styleDot);
     };
-    addDots();
+    try{
+        addDots();
+    }catch(error){
+        console.error()
+    }
+   
     const fotoGallery = () => {
         const slide = document.querySelectorAll('.gallery-slider>.slide'),
             btn = document.querySelectorAll('.sliderBtn'),
@@ -299,23 +309,39 @@ const sliders = () => {
         addActiveClass();
 
         const prevSlide = (elem, index, strClass) => {
-            elem[index].classList.remove(strClass);
+            try{
+                 elem[index].classList.remove(strClass);
+            }catch(error){
+                console.error()
+            }
+           
         };
 
         const nextSlide = (elem, index, strClass) => {
-            elem[index].classList.add(strClass);
+            try{
+                elem[index].classList.add(strClass);
+            }catch(error){
+                console.error()
+            }
+            
         };
 
         const autoPlaySlide = () => {
-
-            prevSlide(slide, currentSlide, 'galleryActive');
-            prevSlide(dot, currentSlide, 'dot-active');
+            try{
+                prevSlide(slide, currentSlide, 'galleryActive');
+                prevSlide(dot, currentSlide, 'dot-active');
+            }catch(error){
+                console.error()
+            }
+            
             currentSlide++;
             if (currentSlide >= slide.length) {
                 currentSlide = 0;
             }
-            nextSlide(slide, currentSlide, 'galleryActive');
-            nextSlide(dot, currentSlide, 'dot-active');
+                nextSlide(slide, currentSlide, 'galleryActive');
+                nextSlide(dot, currentSlide, 'dot-active');
+            
+            
         };
 
         const startSlide = (time = 3000) => {
@@ -379,7 +405,13 @@ const sliders = () => {
 
         startSlide(4000);
     };
-    fotoGallery();
+    try{
+        fotoGallery();
+    }catch(error){
+        console.error()
+    }
+    
+    
 };
 
 export default sliders;
