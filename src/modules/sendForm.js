@@ -1,3 +1,4 @@
+import calculate from './calc';
 const sendForm = () => {
     const errorMessage = 'Ошибка',
         loadMessage = 'Идет отправка...',
@@ -61,19 +62,26 @@ const sendForm = () => {
                     }
                     thanksPopUp(successMessage);
                     setTimeout(() => {
-
                         input.forEach(elem => elem.value = '');
                         statusMessage.textContent = '';
+                        calculate('1', 'mozaika');
+                        calculate('1', 'schelkovo');
                     }, 3000);
+                    
                 })
                 .catch(error => {
                     thanksPopUp(errorMessage);
+                    calculate('1', 'mozaika');
+                    calculate('1', 'schelkovo');
                     console.error(error);
+
                 });
 
             input.forEach(elem => {
-                elem.value = '';
-                elem.checked = false;
+                if(elem.name !== 'card-type'){
+                    elem.value = '';
+                    elem.checked = false;  
+                }
             });
 
             btn.forEach(elem => {

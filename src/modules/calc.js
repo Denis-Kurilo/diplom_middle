@@ -28,7 +28,6 @@ const calc = () => {
         };
 
         // Функция вывода цены на основе данных из объекта
-        console.dir(priceTotal.textContent)
         const calculate = (month = tempData.month, clubName = tempData.clubName) => {
             priceTotal.textContent = price[clubName][month];   
         };
@@ -43,8 +42,9 @@ const calc = () => {
             } else if (event.target.name === 'club-name') {
                 tempData.clubName = event.target.value;
                 calculate(tempData.month, tempData.clubName);
-              
 
+            }else{
+            	// event.target.hasAttribute('checked');
             }
         });
 
