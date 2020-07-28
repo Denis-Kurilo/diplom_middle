@@ -5,7 +5,7 @@ const sendForm = () => {
 
     const form = document.querySelectorAll('form'),
         body = document.querySelector('body'),
-        input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox], input[type=radio]'),
+        input = document.querySelectorAll('input[type=text]:not(.promoCode), input[type=tel], input[type=checkbox], input[type=radio]:not(#card_leto_mozaika)'),
         checkbox = document.querySelectorAll('input[type=checkbox]'),
         btn = document.querySelectorAll('button[type=submit]'),
         thanks = document.getElementById('thanks'),

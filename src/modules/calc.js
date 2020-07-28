@@ -2,6 +2,7 @@ const calc = () => {
     try {
         const cardOrder = document.getElementById('card_order'),
             priceTotal = document.getElementById('price-total'),
+            promoCod = document.querySelector('.input-text'),
             clubPromo = document.getElementsByName('club-promo');
 
         // Прайс клубов
@@ -27,36 +28,35 @@ const calc = () => {
         };
 
         // Функция вывода цены на основе данных из объекта
+        console.dir(priceTotal.textContent)
         const calculate = (month = tempData.month, clubName = tempData.clubName) => {
-            priceTotal.innerText = price[clubName][month];
+            priceTotal.textContent = price[clubName][month];   
         };
         calculate();
-
-        // Функция проверки корректного ввода промо-кода
-        const checkPromo = () => {
-            if (clubPromo[0] === 'ТЕЛО2019') {
-                priceTotal.innerText = Math.trunc(+priceTotal.innerText - (priceTotal.innerText * 0.3));
-            } else {
-                calculate();
-            }
-        };
-
         // Слушатель выбора параметров на странице
         cardOrder.addEventListener('click', () => {
             if (event.target.name === 'card-type') {
                 tempData.month = event.target.value;
                 calculate(tempData.month, tempData.clubName);
-                checkPromo();
+              
+
             } else if (event.target.name === 'club-name') {
                 tempData.clubName = event.target.value;
                 calculate(tempData.month, tempData.clubName);
-                checkPromo();
+              
+
             }
         });
 
         // Вызов функции проверки промо-кода, после ввода кода
-        clubPromo[0].addEventListener('input', checkPromo);
-        // eslint-disable-next-line no-empty
+        promoCod.addEventListener('input', (e) => {
+            let target = e.target;
+            if (target.value.toUpperCase() === 'ТЕЛО2019') {
+                priceTotal.innerText = Math.trunc(+priceTotal.innerText - (priceTotal.innerText * 0.3));
+            } else {
+                calculate();
+            }
+        });
     } catch { }
 };
 export default calc;

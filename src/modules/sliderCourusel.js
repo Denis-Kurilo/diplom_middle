@@ -74,7 +74,7 @@
 				}
 				.glo-slider__item{
 					flex: 0 0 ${this.options.widthSlide}%;
-					margin: auto 0;
+					margin: 0 auto;
 				}
 			`;
             document.head.appendChild(style);
