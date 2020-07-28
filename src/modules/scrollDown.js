@@ -1,5 +1,4 @@
 const scrollDown = () => {
-
 	const anchors = document.querySelectorAll('li a[href^= "#"], .wrapper>a[href*= "#"]');
 		for (let anchor of anchors){
 			anchor.addEventListener('click', (event) =>{

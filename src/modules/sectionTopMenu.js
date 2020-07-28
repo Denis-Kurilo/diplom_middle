@@ -72,9 +72,7 @@ const sectionTopMenu = () => {
                 gift.style.display = 'block';
                 fixedGift.style.display = 'none';
             });
-
-
-
+            
             gift.addEventListener('click', (e) => {
                 let target = e.target;
                 target = target.closest('.form-content');

@@ -10,11 +10,6 @@ import calc from './modules/calc';
 import sliderCourusel from './modules/sliderCourusel';
 
   
-       
-
-
-
-
 //Вызов функции
 sectionTopMenu();
 
@@ -29,8 +24,6 @@ scrollDown();
 
 //slider-Header
 sliders();
-
-
 
 //mobileMenu
 mobileMenu();

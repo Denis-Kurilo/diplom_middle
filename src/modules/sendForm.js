@@ -76,7 +76,7 @@ const sendForm = () => {
                 });
 
             input.forEach(elem => {
-                if(elem.name !== 'card-type'){
+                if(elem.name !== 'card-type' && elem.name !== 'club-name' ){
                     elem.value = '';
                     elem.checked = false;  
                 }
@@ -109,8 +109,10 @@ const sendForm = () => {
                 document.getElementById(idForm).style.display = 'none'; +
 
                 input.forEach(elem => {
-                    elem.value = '';
-                    elem.checked = false;
+                    if(elem.name !== 'card-type' && elem.name !== 'club-name'){
+                        elem.value = '';
+                        elem.checked = false;
+                    }
                 });   
                 mesConfirm.style.display = 'block';     
 
