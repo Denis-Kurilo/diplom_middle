@@ -72,9 +72,12 @@ const sliders = () => {
         }
 
         addGloClass() {
-            this.main.classList.add('glo-slider');
-            this.wrap.classList.add('glo-slider_wrap');
-            this.wrap.classList.add('services-slider');
+            
+                this.main.classList.add('glo-slider');
+                this.wrap.classList.add('glo-slider_wrap');
+                this.wrap.classList.add('services-slider');    
+
+            
 
             for (const item of this.slides) {
                 item.classList.add('glo-slider__item');
@@ -285,12 +288,8 @@ const sliders = () => {
 		`;
         document.head.append(styleDot);
     };
-    try{
-        addDots();
-    }catch(error){
-        console.error()
-    }
-   
+    addDots();
+    
     const fotoGallery = () => {
         const slide = document.querySelectorAll('.gallery-slider>.slide'),
             btn = document.querySelectorAll('.sliderBtn'),
@@ -405,11 +404,9 @@ const sliders = () => {
 
         startSlide(4000);
     };
-    try{
-        fotoGallery();
-    }catch(error){
-        console.error()
-    }
+    
+    fotoGallery();
+    
     
     
 };

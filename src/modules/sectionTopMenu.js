@@ -33,24 +33,6 @@ const sectionTopMenu = () => {
             closeBtn = document.querySelectorAll('.close-btn'),
             thanks = document.getElementById('thanks');
 
-        /*body.addEventListener('click', (e) => {
-            let target = e.target;
-
-            if (target.classList.contains('overlay')) {
-                const idForm = target.parentNode.id;
-                document.getElementById(idForm).style.display = 'none'; +
-
-                input.forEach(elem => {
-                    elem.value = '';
-                    elem.checked = false;
-                });        
-
-                btn.forEach(elem => {
-                    elem.setAttribute('disabled', 'disabled');
-                });
-            }
-        });*/
-
         closeIcon.forEach(elem => {
             elem.addEventListener('click', (event) => {
                 let target = event.target.parentNode.parentNode;

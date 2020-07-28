@@ -10,7 +10,8 @@ const sendForm = () => {
         btn = document.querySelectorAll('button[type=submit]'),
         thanks = document.getElementById('thanks'),
         bannerForm = document.getElementById('banner-form'),
-        footerForm = document.getElementById('footer_form');
+        footerForm = document.getElementById('footer_form'),
+        cardOrder = document.getElementById('card_order');
     form.forEach((elem) => {
         elem.addEventListener('submit', (event) => {
             let target = event.target;
@@ -25,7 +26,7 @@ const sendForm = () => {
 				    align-items: center;
 				    justify-content: center;
 				`;
-                if (target.id === 'banner-form' || target.id === 'footer_form') {
+                if (target.id === 'banner-form' || target.id === 'footer_form' || target.id === 'card_order') {
                     thanks.style.display = 'flex';
                     const statusMes = document.createElement('span');
                     statusMes.textContent = loaded;
@@ -41,7 +42,7 @@ const sendForm = () => {
                     statusMessage.textContent = status;
                 }
             };
-            if (target.id === 'banner-form' || target.id === 'footer_form'){
+            if (target.id === 'banner-form' || target.id === 'footer_form' || target.id === 'card_order'){
                 thanksPopUp(undefined, loadMessage);
             }else{
                 statusMessage.textContent = loadMessage;

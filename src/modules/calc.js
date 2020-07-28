@@ -1,69 +1,62 @@
 const calc = () => {
-	const radio = document.querySelectorAll('.time>input[type=radio]'),
-		radioBtn = document.querySelectorAll('.club>input[type=radio]'),
-		cardOrder = document.getElementById('card_order'),
-		promoCod = document.querySelector('.input-text'),
-		promoCode = document.querySelector('.promoCode'),
-		priceTotal = document.getElementById('price-total');
+    try {
+        const cardOrder = document.getElementById('card_order'),
+            priceTotal = document.getElementById('price-total'),
+            clubPromo = document.getElementsByName('club-promo');
 
-	priceTotal.textContent = 0;
+        // Прайс клубов
+        const price = {
+            mozaika: {
+                1: 1999,
+                6: 9900,
+                9: 13900,
+                12: 19900
+            },
+            schelkovo: {
+                1: 2999,
+                6: 14990,
+                9: 21990,
+                12: 24990
+            }
+        };
 
-	const clickBtnActiv = () => {
-		radio.forEach(elem => {
-			elem.addEventListener('click', (e) => {
-				radio.forEach(elem => {
-					elem.removeAttribute('checked');
-				});
-				elem.setAttribute('checked','checked')
-			});
-		});
+        // Промежуточное хранение выбранных параметров на странице
+        const tempData = {
+            month: 1,
+            clubName: 'mozaika'
+        };
 
-		radioBtn.forEach(elem => {
-			elem.addEventListener('click', (e) => {
-				radioBtn.forEach(elem => {
-					elem.removeAttribute('checked');
-				});
-				elem.setAttribute('checked','checked')
-			});
-		});
-	};
-	clickBtnActiv();
+        // Функция вывода цены на основе данных из объекта
+        const calculate = (month = tempData.month, clubName = tempData.clubName) => {
+            priceTotal.innerText = price[clubName][month];
+        };
+        calculate();
 
-	const calculate = () => {
-		cardOrder.addEventListener('click', (event) => {
-			let target = event.target;
-			console.dir(target)
-			const priceMozaika = {
-				m1: 1990,
-				m2: 9900,
-				m3: 13900,
-				m4: 19900
-			}
-				
-			for(let key in priceMozaika){
-				if(target.id === key){
-					priceTotal.textContent = priceMozaika[key];
-				}
-			}
-			let countPrice = priceTotal.textContent;
-			if(countPrice == 0){
-				promoCode.setAttribute('disabled', 'disabled');
-			}else{
-				promoCode.removeAttribute('disabled');
-			}
-			promoCod.addEventListener('input', (e) => {
-				let target = e.target;
-				console.log(target)
-				if(target.value === 'ТЕЛО2019'){
-				console.log('1')
-				priceTotal.textContent = (countPrice * 30) / 100;
-				if(target.classList.contains('promoCode')){
-					target.setAttribute('disabled', 'disabled')
-				}
-				}
-			})
-		});
-	};
-	calculate();
+        // Функция проверки корректного ввода промо-кода
+        const checkPromo = () => {
+            if (clubPromo[0] === 'ТЕЛО2019') {
+                priceTotal.innerText = Math.trunc(+priceTotal.innerText - (priceTotal.innerText * 0.3));
+            } else {
+                calculate();
+            }
+        };
+
+        // Слушатель выбора параметров на странице
+        cardOrder.addEventListener('click', () => {
+            if (event.target.name === 'card-type') {
+                tempData.month = event.target.value;
+                calculate(tempData.month, tempData.clubName);
+                checkPromo();
+            } else if (event.target.name === 'club-name') {
+                tempData.clubName = event.target.value;
+                calculate(tempData.month, tempData.clubName);
+                checkPromo();
+            }
+        });
+
+        // Вызов функции проверки промо-кода, после ввода кода
+        clubPromo[0].addEventListener('input', checkPromo);
+        // eslint-disable-next-line no-empty
+    } catch { }
 };
 export default calc;
