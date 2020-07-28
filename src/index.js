@@ -7,6 +7,7 @@ import scrollDown from './modules/scrollDown';
 import sliders from './modules/sliders';
 import mobileMenu from './modules/mobileMenu';
 import calc from './modules/calc';
+import sliderCourusel from './modules/sliderCourusel';
 
   
        
@@ -28,6 +29,8 @@ scrollDown();
 
 //slider-Header
 sliders();
+
+
 
 //mobileMenu
 mobileMenu();
