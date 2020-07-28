@@ -65,14 +65,12 @@ const sendForm = () => {
                         input.forEach(elem => elem.value = '');
                         statusMessage.textContent = '';
                         calculate('1', 'mozaika');
-                        calculate('1', 'schelkovo');
                     }, 3000);
                     
                 })
                 .catch(error => {
                     thanksPopUp(errorMessage);
                     calculate('1', 'mozaika');
-                    calculate('1', 'schelkovo');
                     console.error(error);
 
                 });
