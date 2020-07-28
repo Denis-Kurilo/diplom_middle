@@ -67,6 +67,8 @@
 				.services-slider{
 					transition: transform 0.5s;
 					will-change: transform;
+                    padding-left: 0;
+                    padding-right: 0;
 				}
 				.glo-slider__wrap{
 					display: flex;
@@ -144,11 +146,11 @@
 					filter: none;
 				}
 				.glo-slider__next{
-					right: 25px; 
+					right: 35px; 
 				}
 
 				.glo-slider__prev{
-					left: 25px;
+					left: -6px;
 				}
 			`;
             document.head.appendChild(style);
