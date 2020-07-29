@@ -12,7 +12,8 @@ const sendForm = () => {
         thanks = document.getElementById('thanks'),
         bannerForm = document.getElementById('banner-form'),
         footerForm = document.getElementById('footer_form'),
-        cardOrder = document.getElementById('card_order');
+        cardOrder = document.getElementById('card_order'),
+        cardLetoMozaika = document.getElementById('card_leto_mozaika');
     form.forEach((elem) => {
         elem.addEventListener('submit', (event) => {
             let target = event.target;
@@ -37,7 +38,7 @@ const sendForm = () => {
                     setTimeout(() => {
                         statusMes.textContent = '';
                         thanks.style.display = 'none';
-                    }, 6000)
+                    }, 3000)
                     formContent.append(statusMes);
                 } else {
                     statusMessage.textContent = status;
@@ -78,7 +79,18 @@ const sendForm = () => {
             input.forEach(elem => {
                 if(elem.name !== 'card-type' && elem.name !== 'club-name' ){
                     elem.value = '';
-                    elem.checked = false;  
+                    elem.checked = false; 
+                    mesConfirm.style.display = 'block'; 
+                };
+                if(elem.name == 'card-type'){
+                    elem.checked = false; 
+                    mesConfirm.style.display = 'block';
+                    if(elem.value === '1'){
+                        elem.checked = true; 
+                    }
+             
+                }else if(elem.checked == true){
+                    elem.checked = false; 
                 }
             });
 

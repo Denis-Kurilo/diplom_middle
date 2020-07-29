@@ -84,9 +84,7 @@ const sectionTopMenu = () => {
                     gift.style.display = '';
                 }
             });
-        } catch (error) {
-            console.error()
-        }
+        } catch { }
     };
     promo();
 
